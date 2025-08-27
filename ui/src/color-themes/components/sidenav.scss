@@ -1,0 +1,40 @@
+@import "../variables.theme.scss";
+.sidenav-item,
+.sidenav-item-link {
+    color: #fff !important;
+    font-size: var(--text-md-font-size);
+    font-weight: var(--text-md-font-weight);
+}
+.sidenav-item .sidenav-item-link.active {
+//    background-color: color-mix(in srgb, var(--primary-500) 20%, transparent) !important;
+background-color: #ffffff30 !important;
+    // color: var(--default-500) !important;
+    font-size: var(--text-md-font-size);
+    font-weight: var(--text-sm-font-weight);
+    // border-radius: 0px 22px 22px 0px;
+}
+.sidenav-item {
+    &.level-1 {
+        .sidenav-item-link {
+            padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-10xl);
+        }
+    }
+
+    &.level-2 {
+        .sidenav-item-link {
+            padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-12xl);
+        }
+    }
+
+    &.level-3 {
+        .sidenav-item-link {
+            padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-10xl);
+        }
+    }
+
+    &.level-4 {
+        .sidenav-item-link {
+            padding: var(--padding-xs) var(--padding-xl) var(--padding-xs) var(--padding-10xl);
+        }
+    }
+}

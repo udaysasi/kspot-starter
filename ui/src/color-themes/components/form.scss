@@ -1,0 +1,302 @@
+:root {
+    --mat-focus-underline: var(--primary-500);
+    --mat-underline-error: var(--error-500);
+}
+
+.mat-form-field-wrapper {
+    font-family: "Kloud Regular" !important;
+    padding-bottom: 0px !important;
+}
+
+.mat-option-text {
+    font-family: "Kloud Regular" !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: var(--primary-500) !important;
+}
+
+.mat-form-field-invalid .mat-input-element {
+    caret-color: var(--error-500) !important;
+}
+
+.mat-input-element {
+    caret-color: var(--primary-500) !important;
+}
+
+.mat-form-field-underline {
+    position: static !important;
+}
+
+.mat-paginator-page-size {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+    align-content: center;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-infix {
+    border-top-width: 0px;
+}
+
+.mat-form-field-appearance-fill .mat-select-arrow-wrapper {
+    transform: translateY(0%) !important;
+}
+
+.mat-form-field-subscript-wrapper {
+    top: 82% !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--primary-500) !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: var(--error-500) !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: var(--body-bg) !important;
+    border-radius: 7px !important;
+}
+.mat-form-field-suffix .mat-icon-button {
+    height: 0.5rem !important;
+}
+.mat-form-field:not(.mat-form-field-appearance-legacy)
+    .mat-form-field-suffix
+    .mat-icon-button
+    .mat-icon {
+    color: var(--primary-text) !important;
+
+    .fury-default
+        .mat-form-field-appearance-outline.mat-focused
+        .mat-form-field-outline-thick {
+        color: var(--primary-500) !important;
+    }
+}
+ngx-mat-intl-tel-input input::placeholder {
+    color: #999; /* Replace with your desired color */
+}
+
+.mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+    .mat-form-field-outline-thick {
+    color: var(--error-500) !important;
+}
+
+/* mat-form-field with appearance="fill" */
+
+.mat-form-field-appearance-fill .mat-form-field-wrapper {
+    margin: 0 0 0.75em 0;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    // padding: 1.75em 0.75em 0 0.75em !important;
+    background-color: var(--body-bg) !important;
+    border: 1px solid color-mix(in srgb, var(--primary-text) 10%, transparent) !important;
+}
+/* Keep the thin gray baseline as-is */
+.mat-mdc-form-field-appearance-standard .mdc-line-ripple,
+.mat-mdc-form-field-appearance-fill .mdc-line-ripple,
+.mat-mdc-form-field-appearance-legacy .mdc-line-ripple {
+    position: relative;
+    overflow: visible;
+}
+
+/* Hide Material's built-in focus ripple so it doesn't fight us */
+.mdc-line-ripple .mat-mdc-form-field-ripple {
+    opacity: 0 !important;
+}
+
+/* Our custom focus line (starts at center, grows to full width) */
+.mat-mdc-form-field-appearance-standard .mdc-line-ripple::after,
+.mat-mdc-form-field-appearance-fill .mdc-line-ripple::after,
+.mat-mdc-form-field-appearance-legacy .mdc-line-ripple::after,
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-outline-end::after {
+    /* outline support */
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--mat-focus-underline, var(--primary-500));
+    /* your blue */
+    transform-origin: center center;
+    transform: translateX(-50%) scaleX(0);
+    opacity: 0;
+    z-index: 1;
+    transition: transform 500ms ease, opacity 120ms linear;
+}
+
+/* Animate on focus (and keep for invalid if you want) */
+.mat-mdc-form-field.mat-mdc-focused .mdc-line-ripple::after,
+.mat-mdc-form-field.mat-mdc-form-field-invalid .mdc-line-ripple::after {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 1;
+}
+
+/* Optional: error color while keeping same animation */
+.mat-mdc-form-field.mat-mdc-form-field-invalid .mdc-line-ripple::after {
+    background-color: var(--mat-underline-error, var(--error-500));
+}
+
+/* Additional styles for Angular 19 Material (MDC) */
+.mat-mdc-form-field-appearance-standard .mat-mdc-form-field-ripple,
+.mat-mdc-form-field-appearance-fill .mat-mdc-form-field-ripple,
+.mat-mdc-form-field-appearance-legacy .mat-mdc-form-field-ripple,
+.mat-mdc-form-field-appearance-outline .mat-mdc-form-field-ripple {
+    display: none; /* Ensures ripple effect is hidden */
+}
+
+.mat-mdc-form-field-appearance-fill .mdc-line-ripple::before {
+    background-color: color-mix(
+        in srgb,
+        var(--primary-text) 10%,
+        transparent
+    ) !important;
+    display: none !important;
+}
+.mdc-line-ripple::before {
+    display: none !important;
+}
+
+/* If you use appearance="outline" and prefer only the animated underline, hide the outline: */
+/*
+.mat-form-field-appearance-outline .mat-form-field-outline,
+.mat-form-field-appearance-outline .mat-form-field-outline-thick { opacity: 0; }
+*/
+
+/* Theme variables (tweak to taste) */
+
+.mat-error {
+    color: var(--error-500) !important;
+}
+
+/* Hide default Material arrow */
+.mat-select-arrow {
+    display: none !important;
+}
+
+/* Add custom arrow */
+.mat-select-trigger {
+    position: relative;
+    padding-right: 28px;
+    /* space for custom arrow */
+}
+.mat-expansion-indicator::after {
+    border-style: solid !important;
+    border-width: 0 !important;
+
+    padding: 0px !important;
+    content: url("../assets/huge-icons/dropdown-arrow.svg") !important; /* Your custom icon */
+    transform: none !important; /* Remove default rotation */
+}
+
+.mat-expansion-panel-header.mat-expanded .mat-expansion-indicator::after {
+    border-style: solid !important;
+    border-width: 0 !important;
+    padding: 0px !important;
+    transform: rotate(0deg) !important;
+    content: url("../assets/huge-icons/dropdown-arrow.svg"); /* Optional different icon for open state */
+}
+
+.mat-select-trigger::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+
+    /* Option 1: Use custom SVG as background */
+    background: url("../assets/huge-icons/dropdown-arrow.svg") no-repeat center;
+    background-size: contain;
+
+    /* Option 2: Use pure CSS triangle */
+    /* border: solid black;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: translateY(-50%) rotate(45deg); */
+}
+
+//search bar
+
+.search-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    border-radius: var(--border-sm) !important;
+    border: 1px solid color-mix(in srgb, var(--primary-text) 10%, transparent) !important;
+}
+
+.search-input {
+    padding: 8px 12px 8px 32px;
+    font-size: 14px;
+    border: none;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    outline: none;
+    background-image: url("../assets/huge-icons/search.svg");
+    background-position: 8px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    width: calc(100% - 44px);
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-container::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: color-mix(
+        in srgb,
+        var(--primary-text) 10%,
+        transparent
+    ) !important;
+}
+
+.search-container::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: var(--primary-500);
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    opacity: 0;
+    transition: transform 500ms ease, opacity 150ms linear;
+}
+
+.search-container:focus-within::after {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 1;
+}
+.country-selector {
+    border-radius: var(--border-sm) !important;
+    background-color: color-mix(
+        in srgb,
+        var(--primary-500) 10%,
+        transparent
+    ) !important;
+    top: -9px !important;
+    left: -10px !important;
+}
+
+/* --------------------------- */
+/*  Custom Overrides (global)  */
+/* --------------------------- */
+/* Country Code selection for Phone Number Input */
+.mat-menu-content {
+    input.country-search {
+        padding: 2px 8px 2px !important;
+    }
+}

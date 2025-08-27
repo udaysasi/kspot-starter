@@ -1,0 +1,80 @@
+.snackbar {
+    .card {
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        background-color: var(--body-bg);
+        border-radius: var(--border-sm);
+        padding: 1rem;
+        &.error {
+            border-left: 8px solid var(--error-500) !important;
+        }
+        &.warning {
+            border-left: 8px solid var(--warning-500) !important;
+        }
+        &.success {
+            border-left: 8px solid var(--success-500) !important;
+        }
+        &.info {
+            border-left: 8px solid var(--info-500) !important;
+        }
+        .icon-wrap {
+            min-width: 2.5rem !important;
+            min-height: 2.5rem !important;
+            max-width: 2.5rem !important;
+            max-height: 2.5rem !important;
+            padding: 1rem;
+            border-radius: 100%;
+            .mat-icon {
+                height: auto !important;
+                width: auto !important;
+            }
+            mat-icon {
+                color: #ffffff !important;
+                font-size: 1rem !important;
+            }
+            &.error {
+                background-color: color-mix(
+                    in srgb,
+                    var(--error-500) 20%,
+                    transparent
+                ) !important;
+                mat-icon {
+                    color: var(--error-500) !important;
+                    font-size: 1rem !important;
+                }
+            }
+            &.warning {
+                background-color: color-mix(
+                    in srgb,
+                    var(--warning-500) 20%,
+                    transparent
+                ) !important;
+                mat-icon {
+                    color: var(--warning-500) !important;
+                    font-size: 1rem !important;
+                }
+            }
+            &.success {
+                background-color: color-mix(
+                    in srgb,
+                    var(--success-500) 20%,
+                    transparent
+                ) !important;
+                mat-icon {
+                    color: var(--success-500) !important;
+                    font-size: 1rem !important;
+                }
+            }
+            &.info {
+                background-color: color-mix(
+                    in srgb,
+                    var(--info-500) 20%,
+                    transparent
+                ) !important;
+                mat-icon {
+                    color: var(--info-500) !important;
+                    font-size: 1rem !important;
+                }
+            }
+        }
+    }
+}

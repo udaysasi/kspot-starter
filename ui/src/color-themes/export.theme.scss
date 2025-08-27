@@ -1,0 +1,30 @@
+// Variables file
+@import './variables.theme.scss';
+
+// Theme file
+@import './themes/deem.theme.scss';
+
+//Component file
+
+@import './components/button.scss';
+@import './components/card.scss';
+@import './components/element.theme.scss';
+@import './components/form.scss';
+@import './components/mat-calender.scss';
+@import './components/mat-slide-toggle.scss';
+@import './components/mat-tabs.scss';
+@import './components/progress-bar.scss';
+@import './components/radio-button.scss';
+@import './components/text.scss';
+@import './components/background.scss';
+@import './components/sidenav.scss';
+@import './components/snackbars.scss';
+@import './components/numbered-paginator.scss';
+@import './components/mat-chip.scss';
+@import './components/icons.scss';
+@import './components//mat-menu-items.scss';
+@import './components//mat-autocomplete.scss';
+
+//Fonts
+
+@import './fonts/font.theme.scss';

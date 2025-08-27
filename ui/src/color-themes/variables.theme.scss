@@ -1,0 +1,196 @@
+@use "sass:map";
+
+@mixin generate-css-variables($palette, $prefix: '') {
+    @each $key, $val in $palette {
+        --#{$prefix}#{$key}: #{$val};
+    }
+}
+
+@function transparentizeHex($hex, $alpha) {
+    @return rgba($hex, $alpha);
+}
+@mixin responsive-scaled-variables($vars, $breakpoints, $media) {
+  @each $screen, $scale in $breakpoints {
+    $media-width: map.get($media, $screen);
+    @if $media-width == null {
+      :root {
+        @each $name, $val in $vars {
+          @if type-of($val) == number {
+            $calculated: $val * $scale;
+            --#{$name}: #{$calculated};
+          } @else {
+            --#{$name}: #{$val};
+          }
+        }
+      }
+    } @else {
+      @media (min-width: #{$media-width}) {
+        :root {
+          @each $name, $val in $vars {
+            @if type-of($val) == number {
+              $calculated: $val * $scale;
+              --#{$name}: #{$calculated};
+            } @else {
+              --#{$name}: #{$val};
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// === 1. Define Base Variables === //
+$base-vars: (
+    //border radius
+    border-xs: 2px,
+    border-sm: 4px,
+    border-md: 6px,
+    border-lg: 8px,
+    border-xl: 10px,
+    border-2xl: 12px,
+    border-4xl: 14px,
+    border-full: 100%,
+    // Shadows
+    shadow-xs: 0 1px 2px 0 #101828,
+    shadow-sm: 0 1px 3px 0 #101828,
+    shadow-md: 0 4px 8px -2px #101828,
+    shadow-lg: 0 2px 4px -2px #101828,
+    shadow-xl: 0 12px 16px -6px #101828,
+    shadow-2xl: 0 20px 24px -4px #101828,
+    shadow-3xl: 0 240px 48px -12px #101828,
+    // Backdrop Blur
+    backdrop-blur-sm: 8px,
+    backdrop-blur-lg: 24px,
+    backdrop-blur-xl: 40px,
+    // Spacing
+    spacing-none: 0px,
+    spacing-xxs: 2px,
+    spacing-xs: 4px,
+    spacing-sm: 6px,
+    spacing-md: 8px,
+    spacing-lg: 12px,
+    spacing-xl: 16px,
+    spacing-2xl: 20px,
+    spacing-3xl: 24px,
+    spacing-4xl: 32px,
+    spacing-5xl: 40px,
+    spacing-6xl: 48px,
+    spacing-7xl: 64px,
+    spacing-8xl: 80px,
+    spacing-9xl: 96px,
+    spacing-10xl: 128px,
+    spacing-11xl: 160px,
+    // Widths
+    width-xxs: 320px,
+    width-xs: 384px,
+    width-sm: 480px,
+    width-md: 560px,
+    width-lg: 640px,
+    width-xl: 768px,
+    width-2xl: 1024px,
+    width-3xl: 1280px,
+    width-4xl: 1440px,
+    width-5xl: 1600px,
+    width-6xl: 1920px,
+    // Containers
+    container-padding-mobile: 16px,
+    container-padding-desktop: 32px,
+    container-max-width-desktop: 1280px,
+    // Paragraph Max Widths
+    paragraph-max-width: 720px,
+    // Breakpoints
+    breakpoint-small: 600px,
+    breakpoint-medium: 960px,
+    breakpoint-large: 1280px,
+    breakpoint-xlarge: 1280px,
+    // Type scale SCSS variables
+    // Display
+    display-2xl-font-size: 72px,
+    display-2xl-line-height: 90px,
+    display-2xl-tracking: -2%,
+    display-xl-font-size: 60px,
+    display-xl-line-height: 72px,
+    display-xl-tracking: -2%,
+    display-lg-font-size: 48px,
+    display-lg-line-height: 60px,
+    display-lg-tracking: -2%,
+    display-md-font-size: 36px,
+    display-md-line-height: 44px,
+    display-md-tracking: -2%,
+    display-sm-font-size: 30px,
+    display-sm-line-height: 38px,
+    display-sm-tracking: -2%,
+    display-xs-font-size: 24px,
+    display-xs-line-height: 32px,
+    display-xs-tracking: -2%,
+    display-2xs-font-size: 18px,
+    display-2xs-line-height: 26px,
+    display-2xs-tracking: -2%,
+    display-3xs-font-size: 16px,
+    display-3xs-line-height: 22px,
+    display-3xs-tracking: -2%,
+    display-4xs-font-size: 12px,
+    display-4xs-line-height: 18px,
+    display-4xs-tracking: -2%,
+    // Text
+    text-2xl-font-size: 30px,
+    text-xl-font-size: 28px,
+    text-xl-line-height: 30px,
+    text-lg-font-size: 18px,
+    text-lg-line-height: 28px,
+    text-md-font-size: 16px,
+    text-md-line-height: 24px,
+    text-sm-font-size: 14px,
+    text-sm-line-height: 20px,
+    text-xs-font-size: 12px,
+    text-xs-line-height: 18px,
+    text-2xs-font-size: 10px,
+    text-2xs-line-height: 14px,
+    padding-2xl: 18px,
+    padding-xl: 16px,
+    padding-lg: 12px,
+    padding-md: 10px,
+    padding-sm: 6px,
+    padding-xs: 8px,
+    padding-6xl: 24px,
+    padding-4xl: 20px,
+    padding-8xl: 26px,
+    padding-10xl: 32px,
+    padding-12xl: 40px,
+    padding-14xl: 80px,
+    margin-2xl: 18px,
+    margin-xl: 16px,
+    margin-lg: 12px,
+    margin-md: 10px,
+    margin-sm: 6px,
+    margin-xs: 8px,
+    margin-6xl: 24px,
+    margin-4xl: 20px,
+    margin-8xl: 26px,
+    margin-10xl: 32px,
+    margin-12xl: 40px,
+    margin-14xl: 80px,
+    text-xl-font-weight: 700,
+    text-lg-font-weight: 500,
+    text-md-font-weight: 400,
+    text-sm-font-weight: 300,
+);
+
+
+$breakpoints: (
+  small: 0.9,
+  medium: 1,
+  large: 1,
+  xlarge: 1.2
+);
+
+$media-queries: (
+  small: null,
+  medium: 600px,
+  large: 1440px,
+  xlarge: 4000px
+);
+// === 4. Use the Mixin === //
+@include responsive-scaled-variables($base-vars, $breakpoints, $media-queries);

@@ -1,0 +1,15 @@
+<div class="flex justify-between items-center">
+    <div class="flex text-white font-semibold text-xl">
+        {{ message?.name }}
+    </div>
+    @if(message?.mediaRefs?.length){
+    <div class="flex text-white">
+        <button mat-button (click)="onView(message?.mediaRefs)">
+            <mat-icon
+                class="text-white"
+                svgIcon="mat_solid:visibility"
+            ></mat-icon>
+        </button>
+    </div>
+    }
+</div>

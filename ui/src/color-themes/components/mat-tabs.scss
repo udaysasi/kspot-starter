@@ -1,0 +1,8 @@
+@use "../variables.theme.scss" as vars;
+.mat-ink-bar{
+    background-color: var(--primary-500) !important;
+
+}
+.mat-tab-header{
+    border-bottom: 0px !important;
+}

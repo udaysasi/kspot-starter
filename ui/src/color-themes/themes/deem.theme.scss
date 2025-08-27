@@ -1,0 +1,214 @@
+@use "../variables.theme.scss" as utils;
+$teal-palette: (
+    500: #009490,  // Teal  (RGB: 5, 170, 145)
+    400: #07a29d,  // Light Teal  (RGB: 50, 187, 167)
+    300: #80D4C8,  // Lighter Teal shade
+    200: #B2E5DE,  // Very Light Teal
+);
+
+$pantone-1797-cool-gray-palette: (
+    500: #55565A,  // Dark Gray  (RGB: 76, 82, 86)
+    400: #6F7478,  // Slightly lighter gray
+    300: #A5A8AB,  // Lighter gray
+    200: #CACBCC,  // Even lighter gray
+);
+$pantone-429c-palette: (
+    500: #888D8D,  // Dark Gray  (RGB: 76, 82, 86)
+    400: #ABB3B7,  // Slightly lighter gray
+    300: #CACFD2,  // Lighter gray
+    200: #DFE2E4,  // Even lighter gray
+);
+$pantone-540-palette: (
+    500: #133156,  // Pantone 540 C (RGB: 19, 49, 132)
+    400: #13315680,  // Lighter shade of Pantone 540
+    300: #13315650,  // Soft blue shade
+    200: #13315630,  // Light blue shade
+);
+
+$pantone-188-palette: (
+    500: #d92d20,  // Pantone 188 C (RGB: 121, 36, 47)
+    400: #d92d2080,  // Lighter red shade
+    300: #d92d2050,  // Soft red
+    200: #d92d2030,  // Light red
+);
+
+$pantone-748-palette: (
+    500: #748034,  // Pantone 748 C (RGB: 125, 128, 52)
+    400: #74803480,  // Lighter olive green
+    300: #74803450,  // Soft green
+    200: #74803430,  // Light green
+);
+
+$pantone-7679-palette: (
+    500: #573d83,  // Pantone 7679 C (RGB: 87, 61, 131)
+    400: #573d8380,  // Lighter purple shade
+    300: #573d8350,  // Soft purple
+    200: #573d8330,  // Light purple
+);
+
+$pantone-2746-palette: (
+    500: #4C569F,  // Pantone 2746 C (RGB: 38, 28, 135)
+    400: #4C569F80,  // Lighter blue shade
+    300: #4C569F50,  // Soft blue
+    200: #4C569F30,  // Light blue
+);
+
+$pantone-549-palette: (
+    500: #2e90fa,  // Pantone 549 C (RGB: 106, 162, 185)
+    400: #2e90fa80,  // Lighter blue-green
+    300: #2e90fa50,  // Soft blue
+    200: #2e90fa30,  // Light blue
+);
+
+$pantone-1797-palette: (
+    500: #cf4d53,  // Pantone 1797 C (RGB: 207, 77, 83)
+    400: #cf4d5380,  // Lighter red shade
+    300: #cf4d5350,  // Soft red
+    200: #cf4d5330,  // Light red
+);
+
+$pantone-458-palette: (
+    500: #dbc553,  // Pantone 458 C (RGB: 219, 197, 83)
+    400: #dbc55380,  // Lighter yellow
+    300: #dbc55350,  // Soft yellow
+    200: #dbc55330,  // Light yellow
+);
+
+$pantone-7730-palette: (
+    500: #079455,  // Pantone 7730 C (RGB: 72, 148, 98)
+    400: #07945580,  // Lighter green
+    300: #07945550,  // Soft green
+    200: #07945530,  // Light green
+);
+$background-logo: '';
+$gradient: linear-gradient(to bottom,#2ba6a3,#4e549f);
+
+//  Text Colors
+$primary-text: #0d121c;
+$primary-dark-text: #ffffff;
+$secondary-text: #384250;
+$secondary-dark-text: #ffffff70;
+$tertiary-text: #4d5761;
+$tertiary-dark-text: #ffffff60;
+$quaternary-text: #e6e6e6;
+$quaternary-dark-text: #ffffff60;
+
+// Platform-Specific Text Colors
+$sa-800-primary-text: #0d121c;
+$sa-600-secondary-text: #384250;
+$sa-500-tertiary-text: #4d5761;
+
+// Semantic Text Colors
+$error-600-primary-text: #d92d20;
+$warning-600-primary-text: #dc6803;
+$success-600-primary-text: #1b8354;
+$info-600-primary-text: #1570ef;
+
+$body-bg-light: #ffffff;
+$container-bg-light: #a2a3a4;
+$main-container-light: #F3F4F4;
+
+
+$body-bg-dark: #121212;
+$container-bg-dark: #252525;
+
+body.light , fury-light {
+    @include utils.generate-css-variables($teal-palette, 'primary-');
+    @include utils.generate-css-variables($pantone-2746-palette, 'secondary-');
+    @include utils.generate-css-variables($pantone-1797-palette, 'error-');
+    @include utils.generate-css-variables($pantone-458-palette, 'warning-');
+    @include utils.generate-css-variables($pantone-7730-palette, 'success-');
+    @include utils.generate-css-variables($pantone-549-palette, 'info-');
+    @include utils.generate-css-variables($pantone-1797-cool-gray-palette, 'default-');
+    --gradient-color: #($gradient);
+    // --logo: #{$logo-light};
+    --background-logo: #($background-logo);
+    --primary-text: #{$primary-text};
+    --secondary-text: #{$secondary-text};
+    --tertiary-text: #{$tertiary-text};
+    --quaternary-text: #{$quaternary-text};
+    --body-bg: #{$body-bg-light};
+    --main-container-bg: #{$main-container-light};
+
+    --bg-white: #fff;
+    --bg-charcoal: #1A1A1A;
+    --container-bg: #{$container-bg-light};
+    // Platform Texts
+    --sa-800-primary-text: #{$sa-800-primary-text};
+    --sa-600-secondary-text: #{$sa-600-secondary-text};
+    --sa-500-tertiary-text: #{$sa-500-tertiary-text};
+
+    // Semantic Texts
+    --error-color: #{$error-600-primary-text};
+    --warning-color: #{$warning-600-primary-text};
+    --success-color: #{$success-600-primary-text};
+    --info-color: #{$info-600-primary-text};
+}
+body.dark , fury-dark {
+ @include utils.generate-css-variables($teal-palette, 'primary-');
+    @include utils.generate-css-variables($pantone-2746-palette, 'secondary-');
+    @include utils.generate-css-variables($pantone-1797-palette, 'error-');
+    @include utils.generate-css-variables($pantone-458-palette, 'warning-');
+    @include utils.generate-css-variables($pantone-7730-palette, 'success-');
+    @include utils.generate-css-variables($pantone-549-palette, 'info-');
+    @include utils.generate-css-variables($pantone-1797-cool-gray-palette, 'default-');
+
+    // --logo: #{$logo-dark};
+     --gradient-color: #($gradient);
+    --background-logo: #($background-logo);
+    --primary-text: #{$primary-dark-text};
+    --secondary-text: #{$secondary-dark-text};
+    --tertiary-text: #{$tertiary-dark-text};
+    --body-bg: #{$body-bg-dark};
+    --bg-white: #fff;
+    --bg-charcoal: #1A1A1A;
+    --container-bg: #{$container-bg-dark};
+      --main-container-bg: #{$main-container-light};
+    --sa-800-primary-text: #{$sa-800-primary-text};
+    --sa-600-secondary-text: #{$sa-600-secondary-text};
+    --sa-500-tertiary-text: #{$sa-500-tertiary-text};
+    --error-color: #{$error-600-primary-text};
+    --warning-color: #{$warning-600-primary-text};
+    --success-color: #{$success-600-primary-text};
+    --info-color: #{$info-600-primary-text};
+}
+
+body {
+    font-family: "Kloud Medium" !important;
+    background: var(--main-container-bg) !important;
+    color: var(--primary-text) !important;
+    fuse-splash-screen {
+        background: linear-gradient(to bottom,#2ba6a3,#4e549f)!important;
+        .spinner > div {
+            background-color: var(--primary-text) !important;
+        }
+    }
+    .deem-gradient {
+         background: linear-gradient(to bottom,#2ba6a3,#4e549f)!important;
+    }
+    .toolbar-bg {
+        background-color: var(--container-bg) !important;
+    }
+    .container-bg {
+        background-color: var(--body-bg) !important;
+    }
+    .main-container-bg{
+        background-color: var(--main-container-bg) !important;
+    }
+    .inner-container-bg{
+        background-color: var(--body-bg) !important;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none !important;
+    }
+    *::-webkit-scrollbar {
+        display: none;
+    }
+    .primary-dark-text{
+        color: var(#{$primary-dark-text}) ;
+    }
+    #fury-splash-screen{
+       background: linear-gradient(to bottom,#2ba6a3,#4e549f)!important;
+    }
+    
+}

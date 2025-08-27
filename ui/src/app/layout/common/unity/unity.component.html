@@ -1,0 +1,36 @@
+<div
+    [ngClass]="isLoading ? 'hidden' : 'block'"
+    id="unity-container"
+    class="unity-desktop h-full w-full"
+    #webglContainer
+    style="z-index: 100"
+>
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+    <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+            <div id="unity-progress-bar-full"></div>
+        </div>
+    </div>
+    <div id="unity-warning"></div>
+    <div id="unity-footer" style="display: none">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title"></div>
+    </div>
+</div>
+<div
+    id="loading"
+    [ngClass]="isLoading ? 'flex' : 'hidden'"
+    class="flex w-full h-full justify-center items-center bg-black"
+>
+    <div class="flex w-full items-center flex-col gap-2">
+        <div class="flex">Loading</div>
+        <mat-progress-bar
+            class="w-1/3"
+            mode="determinate"
+            [value]="progressPer"
+        ></mat-progress-bar>
+        <div class="flex">{{ progressPer }} %</div>
+    </div>
+</div>

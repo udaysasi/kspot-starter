@@ -1,0 +1,125 @@
+<div class="h-full w-full">
+    <div class="flex h-[calc(100vh-4rem)]">
+        <!-- Left nav (20%) -->
+        <aside class="w-[20%] min-w-[260px] max-w-[360px] border-r border-gray-200 overflow-y-auto">
+            <div class="p-4">
+                <h2 class="text-4xl font-semibold mb-3 text-primary">Sites</h2>
+
+                <div *ngIf="loadingSites()" class="text-sm text-gray-500">Loading sites…</div>
+                <div *ngIf="!loadingSites() && !sites().length" class="text-sm text-gray-500">No sites found.</div>
+
+                <ul class="space-y-2">
+                    <li *ngFor="let s of sites()">
+                        <button (click)="selectSite(s.id)" class="w-full text-left p-3 rounded-lg border transition hover:bg-gray-50 
+                                 border-gray-300 ring-0" [class.border-primary]="selectedSiteId() === s.id"
+                            [class.ring-2]="selectedSiteId() === s.id"
+                            [class.ring-blue-500]="selectedSiteId() === s.id">
+                            <div class="flex items-center justify-between">
+                                <span class="font-semibold text-base md:text-lg text-primary">{{ s.name }}</span>
+                                <div class="flex items-row">
+                                    <span class="text-xs secondary-button" *ngIf="s.floors?.length">
+                                        {{ floorCount(s) }} floors
+                                    </span>
+                                    <!--
+                                    <span
+                                        class="text-[10px] rounded px-2 py-[2px] bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300"
+                                        *ngIf="totalZoneCount(s) > 0">
+                                        {{ totalZoneCount(s) }} zones
+                                    </span>
+                                    -->
+                                </div>
+                            </div>
+                            <div class="mt-1 text-sm md:text-base text-secondary"> <!-- ↑ bigger -->
+                                <div *ngIf="s.address">{{ s.address }}</div>
+                                <div *ngIf="s.timeZoneId">({{ s.timeZoneId }})</div>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Content (80%) -->
+        <main class="flex-1 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex items-start justify-between mb-4">
+                    <div>
+                        <h1 class="text-3xl md:text-3xl font-bold text-primary">
+                            {{ selectedSite()?.name || 'Select a site' }}
+                        </h1>
+                        <p class="text-base md:text-md text-secondary mt-1" *ngIf="selectedSite() as site">
+                            {{ site.address }} <span *ngIf="site.timeZoneId">• {{ site.timeZoneId }}</span>
+                        </p>
+                    </div>
+
+                    <!-- Help link -->
+                    <div class="pt-1">
+                        <button type="button" (click)="openHelp()"
+                            class="text-primary underline text-sm md:text-base hover:opacity-80">
+                            Help
+                        </button>
+                    </div>
+                </div>
+
+                <div *ngIf="errorMsg()" class="mb-4 rounded bg-red-50 text-red-800 p-3 text-sm">
+                    {{ errorMsg() }}
+                </div>
+
+                <!-- Loading skeleton -->
+                <div *ngIf="loadingDist()" class="mb-6">
+                    <div class="animate-pulse h-80 rounded-lg bg-gray-100"></div>
+                    <div class="mt-6 h-40 rounded-lg bg-gray-100 animate-pulse"></div>
+                </div>
+
+                <!-- Chart -->
+                <div *ngIf="!loadingDist() && hasAnyData(); else noDataTpl"
+                    class="rounded-xl border border-gray-200 p-4">
+                    <apx-chart [series]="lineOptions().series!" [chart]="lineOptions().chart!"
+                        [xaxis]="lineOptions().xaxis!" [yaxis]="lineOptions().yaxis!" [stroke]="lineOptions().stroke!"
+                        [legend]="lineOptions().legend!" [tooltip]="lineOptions().tooltip!"
+                        [dataLabels]="lineOptions().dataLabels!" [title]="lineOptions().title!"></apx-chart>
+                </div>
+
+                <!-- Transposed table -->
+                <div class="mt-6 rounded-xl border border-gray-200 overflow-x-auto"
+                    *ngIf="!loadingDist() && hasAnyData()">
+                    <div class="px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-bold text-xl text-primary">Hourly Table</h3>
+                    </div>
+                    <table class="min-w-full text-sm">
+                        <thead class="bg-gray-50">
+                            <tr class="text-left">
+                                <th class="px-4 py-2 font-medium w-32"></th>
+                                <th *ngFor="let r of sortedRows()"
+                                    class="px-4 py-2 text-right whitespace-nowrap font-bold text-md">
+                                    {{ formatHour(r.timestamp) }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-gray-100">
+                                <td class="px-4 py-2 font-semibold text-lg">Male</td>
+                                <td *ngFor="let r of sortedRows()" class="px-4 py-2 text-right">{{ r.male | number }}
+                                </td>
+                            </tr>
+                            <tr class="border-t border-gray-100">
+                                <td class="px-4 py-2 font-semibold text-lg">Female</td>
+                                <td *ngFor="let r of sortedRows()" class="px-4 py-2 text-right">{{ r.female | number }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- No-data message -->
+                <ng-template #noDataTpl>
+                    <div *ngIf="!loadingDist()"
+                        class="mt-6 rounded-lg border border-gray-200 p-4 text-sm text-center h-128 flex items-center justify-center">
+                        No data available for today
+                    </div>
+                </ng-template>
+
+            </div>
+        </main>
+    </div>
+</div>

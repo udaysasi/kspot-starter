@@ -1,0 +1,171 @@
+@import "../../../color-themes/variables.theme.scss";
+/* ———  overall responsive grid  ——— */
+/* -----------------------------------------------------------
+   0. Shared spacings & tokens (already imported via variables)
+   -----------------------------------------------------------*/
+
+/* -----------------------------------------------------------
+   1. Container now flows *vertically* (one section per row)
+   -----------------------------------------------------------*/
+.sg-container {
+  display: flex;                       /* ⬅ was CSS-grid  */
+  flex-direction: column;
+  gap: var(--spacing-4xl);
+  padding: var(--spacing-4xl);
+}
+
+/* -----------------------------------------------------------
+   2. Each card becomes a grid:  ⎡140 px label | preview auto⎦
+   -----------------------------------------------------------*/
+.sg-card {
+  display: grid;                       /* ⬅ changed from flex-column */
+  grid-template-columns: 140px 1fr;    /* 140 px ≈ mock’s left gutter */
+  column-gap: var(--spacing-2xl);
+  align-items: flex-start;
+}
+
+/* span-2 simply widens the *preview* when you need both columns */
+.sg-card.span-2 { grid-template-columns: 140px calc(2 * (1fr)); }
+
+/* -----------------------------------------------------------
+   3. Headings live in the first column, so no bottom-margin
+   -----------------------------------------------------------*/
+.sg-title {
+  font-size: var(--text-lg-font-size);
+  font-weight: 600;
+  margin: 0;                           /* ⬅ remove original bottom gap */
+  align-self: start;
+}
+
+/* -----------------------------------------------------------
+   4. Preview always sits in the second column
+   -----------------------------------------------------------*/
+.sg-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* helper when you WANT a vertical stack                              */
+.sg-preview.flex-col { flex-direction: column; }
+
+/* -----------------------------------------------------------
+   5. Responsive: stack on very narrow screens (<640 px)
+   -----------------------------------------------------------*/
+@media (max-width: 640px) {
+  .sg-card         { grid-template-columns: 1fr; }
+  .sg-title        { margin-bottom: var(--spacing-lg); }
+}
+
+.sg-preview > * {
+    position: relative;
+    cursor: help;                 /* shows ‘?’ cursor */
+  }
+
+  .sg-preview > *:hover::after {
+    content: "." attr(class);     /* e.g. ".primary-button stroked" */
+    position: absolute;
+    bottom: calc(100% + 0.25rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, .85);
+    color: #fff;
+    font-size: 11px;
+    line-height: 1;
+    padding: 4px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  /* little arrow */
+  .sg-preview > *:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top: 0;
+    border-bottom-color: rgba(0, 0, 0, .85);
+  }
+
+
+
+
+  /* Layout for the whole colours preview (wraps on small widths) */
+  .colors-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-3xl);
+  }
+
+  /* One semantic group (Primary, Secondary, …) */
+  .swatch-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    min-width: 140px;               /* keeps label + 4 swatches tidy */
+  }
+
+  .swatch-group__label {
+    @apply  font-semibold tracking-wide text-center;
+  }
+
+  /* Individual colour token */
+  .swatch {
+    --swatch-color: #000;           /* fallback */
+    width: 64px;
+    height: 64px;
+    border-radius: 8px;
+    background: var(--swatch-color);
+    color: var(--secondary-text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+
+/* Center the paginator inside the preview column */
+.paginator-host {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--spacing-md);
+}
+
+/* Event readout matches the look of your other code blocks */
+.event {
+  background: rgba(0, 0, 0, .08);
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  opacity: .9;
+}
+
+/* Optional: lightly harmonize the paginator’s buttons with your demo page */
+:host ::ng-deep fury-numbered-paginator .page-btn {
+  min-width: 36px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+:host ::ng-deep fury-numbered-paginator .page-btn.active {
+  background: rgba(99, 102, 241, .14);
+}
+
+:host ::ng-deep fury-numbered-paginator .nav-btn {
+  height: 36px;
+  width: 36px;
+}

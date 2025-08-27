@@ -1,0 +1,106 @@
+@import "../variables.theme.scss" ;
+.w-full{
+    width: 100% !important;
+}
+.h-full{
+    height: 100% !important;
+}
+.primary-bg {
+    background-color: var(--primary-500) !important;
+    &.hover{
+        &:hover{
+             background-color: var(--primary-300) !important;
+        }
+    }
+}
+.error-bg {
+    background-color: var(--error-500) !important;
+    &.hover{
+        &:hover{
+             background-color: var(--error-300) !important;
+        }
+    }
+}
+.success-bg {
+    background-color: var(--success-500) !important;
+    &.hover{
+        &:hover{
+             background-color: var(--success-300) !important;
+        }
+    }
+}
+.warning-bg {
+    background-color: var(--warning-500) !important;
+    &.hover{
+        &:hover{
+             background-color: var(--warning-300) !important;
+        }
+    }
+}
+.body-bg {
+    background-color: var(--body-bg);
+}
+.z-index-1 {
+    z-index: 1;
+}
+.z-index-0 {
+    z-index: 0;
+}
+.h-full {
+    height: 100% !important;
+}
+.w-full {
+    width: 100% !important;
+}
+
+.secondary-bg {
+    background-color: var(--secondary-900);
+}
+.glass-sm {
+    backdrop-filter: blur(var(--backdrop-blur-sm));
+    background-color: #36294B;
+}
+
+.glass-sm-secondary {
+    backdrop-filter: blur(var(--backdrop-blur-sm));
+    background-color: #29C9B3;
+}
+
+.arrow-right{
+    font-size: 16px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.glass-lg {
+    backdrop-filter: blur(var(--backdrop-blur-lg));
+    background-color: #ffffff20;
+}
+.glass-xl {
+    backdrop-filter: blur(var(--backdrop-blur-xl));
+    background-color: #ffffff20;
+}
+.bg-white {
+    background-color: var(--bg-white) !important;
+}
+.bg-black {
+    background-color: var(--default-500) !important;
+}
+
+//Hybrid side nav panel backgrounds\
+// .sidenav {
+//     padding: var(--padding-xl;
+// }
+
+
+
+.divider{
+    border-bottom: 1px solid color-mix(in srgb, var(--default-300) 60%, transparent) !important;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+.add-icon{
+    background-color: var(--white-350);
+    border-radius: 50%;
+    padding: var(--padding-md);
+}

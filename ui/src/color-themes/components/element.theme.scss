@@ -1,0 +1,69 @@
+@use "sass:map";
+@use "sass:color";
+@import "../variables.theme.scss";
+@import "../fonts/font.theme.scss" ;
+
+.whitespace-nowrap{
+    white-space: nowrap !important;
+}
+/* Lists */
+ol,
+ul {
+  font-size: var(--text-md-font-size);
+  line-height: var(--text-md-line-height);
+  color: var(--primary-text);
+  margin-left: var(--spacing-lg);
+   font-family: 'Kloud Regular' !important;
+}
+
+li {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Table Styles */
+.table-wrapper{
+table {
+   font-family: 'Kloud Regular' !important;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-xs);
+
+  th {
+    background-color: color-mix(in srgb, var(--primary-text) 5%, transparent) !important;
+    border: 1px solid color-mix(in srgb, var(--primary-text) 10%, transparent) !important;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-weight: bold;
+    color: var(--primary-text);
+  }
+
+  td {
+    background-color: transparent;
+    border: 1px solid color-mix(in srgb, var(--primary-text) 10%, transparent) !important;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    color: var(--primary-500);
+    .mat-icon{
+        color: var(--primary-text) !important;
+    }
+  }
+
+  tr:nth-child(even) {
+    background-color: color-mix(in srgb, var(--primary-text) 5%, transparent) !important;
+  }
+
+  tr:hover {
+    // background-color: var(--gray-100);
+  }
+
+  border: 1px solid color-mix(in srgb, var(--primary-text) 10%, transparent) !important;
+}
+}
+
+
+.otp-input {
+  caret-color :  var(--primary-500) !important;
+  &:focus-visible{
+    outline: 1px solid var(--primary-500) !important;
+  }
+  
+}

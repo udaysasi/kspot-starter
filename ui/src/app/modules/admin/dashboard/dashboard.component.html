@@ -1,0 +1,13 @@
+<div class="flex w-full h-full">
+    @if(isModelLoaded){
+    <!-- Here put the UI needed after model is loaded -->
+    } @if(isLoading){
+    <div class="flex w-full h-full">
+        <app-unity
+            [buildPath]="buildPath"
+            class="w-full pointer-events-auto"
+            (onLoad)="onModelLoad($event)"
+        ></app-unity>
+    </div>
+    }
+</div>

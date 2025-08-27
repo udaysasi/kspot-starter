@@ -1,0 +1,35 @@
+<div *ngIf="data" class="snackbar">
+    <div class=" flex justify-start items-stretch  card slide-left" [ngClass]="data?.type || 'info'">
+        <!-- Body -->
+        <div class="body w-full flex flex-col" >
+            <div class="top w-full flex flex-row justify-start items-start gap-[12px]">
+                <div class="icon-wrap flex flex-row justify-center items-center" [ngClass]="data?.type || 'info'">
+                    <mat-icon  *ngIf="data?.type === 'error'">warning</mat-icon>
+                    <mat-icon  *ngIf="data?.type === 'info'">info</mat-icon>
+                    <mat-icon  *ngIf="data?.type === 'warning'">error</mat-icon>
+                    <mat-icon  *ngIf="data?.type === 'success'">check</mat-icon>
+                </div>
+
+                <div class="title flex flex-col w-[90%]">
+                    <div class="text-md font-lg primary-text capitalize" style="word-break: break-all;">{{ data?.title }}</div>
+                    <div  class="text-sm font-sm primary-text" style="word-break: break-all;">
+                        {{ data?.message }}
+                    </div>
+                </div>
+
+             <div (click)="onClose()" class="cursor-pointer w-[5%]"><mat-icon class="primary-text text-md">close</mat-icon></div>
+            </div>
+
+
+
+            <!-- <div class="actions" fxLayout="row" fxLayoutGap="24px">
+        <button mat-button color="primary" (click)="onClose()">
+          {{ d.primaryText || 'Button' }}
+        </button>
+        <button *ngIf="d.showSecondary" mat-button (click)="onClose()">
+          {{ d.secondaryText || 'Button' }}
+        </button>
+      </div> -->
+        </div>
+    </div>
+</div>

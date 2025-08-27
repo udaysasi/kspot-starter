@@ -1,0 +1,41 @@
+<div class="flex flex-col w-full h-full bg-transparent gap-2">
+    <div class="flex justify-end gap-2 items-center">
+        <mat-form-field appearance="outline">
+            <mat-select [formControl]="sourceUrlControl" class="text-white">
+                <mat-option
+                    *ngFor="let item of feedOptions"
+                    [value]="item.value"
+                    >{{ item.key }}</mat-option
+                >
+            </mat-select>
+        </mat-form-field>
+        <mat-icon svgIcon="mat_solid:close" (click)="onCancel()"></mat-icon>
+    </div>
+
+    @if (dialogData.isLive) {
+    <div class="flex border h-full w-full">
+        @if (mediaSource) {
+        <img [src]="mediaSource" alt="Camera Feed" class="rounded-xl" />
+        } @else if (!this.feedOptions?.length) {
+        <div
+            class="flex w-full h-full items-center justify-center font-bold text-xl"
+        >
+            No Cameras Found
+        </div>
+        } @else {
+        <div
+            class="flex w-full h-full items-center justify-center font-bold text-xl"
+        >
+            Loading
+        </div>
+        }
+    </div>
+    } @else {<video
+        [src]="mediaSource"
+        [controls]="dialogData.isLive"
+        class="w-full h-full border"
+        autoplay
+        muted
+    ></video
+    >}
+</div>

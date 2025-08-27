@@ -1,0 +1,111 @@
+@import '../variables.theme.scss';
+
+.main-container {
+    padding: var(--padding-10xl) !important;
+}
+@media (max-width: 768px) {
+    .main-container {
+        padding: var(--padding-xl) !important;
+    }
+}
+.kloud-card {
+    font-family: 'Kloud Regular' !important;
+    background-color: color-mix(in srgb, var(--primary-500) 10%, transparent) !important;
+    padding: var(--padding-8xl);
+    border: 2px solid color-mix(in srgb, var(--primary-500) 5%, transparent)  !important;
+    border-radius: var(--border-sm);
+    color: var(--primary-text) !important;
+    &.hover {
+        &:hover {
+            border: 4px solid var(--primary-500) !important;
+            background-color: color-mix(in srgb, var(--primary-500) 20%, transparent) !important;
+        }
+    }
+}
+
+.mat-card {
+    font-family: 'Kloud Regular' !important;
+}
+
+.button-centre {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+}
+
+.inner-container {
+    padding: var(--padding-xl) !important;
+    border-radius: var(--border-md) !important;
+}
+//Hybrid
+.mim-card {
+    background-color: var(--bg-charcoal) !important;
+    padding: var(--padding-xl) !important;
+    border-radius: var(--border-sm) !important;
+}
+.mim-stroke-card {
+    background-color: transparent;
+    padding: var(--padding-2xl) !important;
+    border: 1px solid color-mix(in srgb, var(--bg-charcoal) 20%, transparent) !important;
+    border-radius: var(--border-sm) !important;
+}
+
+.info-card-bg {
+    background-color: var(--bg-white);
+    border: 1px solid #0d0d0d33;
+    padding: var(--padding-xl);
+}
+.info-card-no-bg {
+    border: 1px solid #0d0d0d33;
+    padding: var(--padding-xl);
+}
+
+.p-xl {
+    padding: var(--padding-xl) !important;
+}
+.py-xl {
+    padding: var(--padding-xl) 0 !important;
+}
+.pt-xl {
+    padding: var(--padding-xl) 0 0 0 !important;
+}
+
+.px-xl {
+    padding: 0 var(--padding-xl) !important;
+}
+.info-card-no-border {
+    background-color: var(--bg-white);
+    padding: var(--padding-xl);
+}
+.b-r-4 {
+    border-radius: var(--border-sm);
+}
+.p-8 {
+    padding: 8px !important;
+}
+.p-lg {
+    padding: var(--padding-lg) var(--padding-6xl) var(--padding-lg) var(--padding-6xl);
+}
+.info-sub-card-bg {
+    background-color: var(--bg-white);
+    padding: var(--padding-xl);
+}
+
+.sub-container {
+    padding: var(--padding-xl);
+}
+.no-margin {
+    margin: 0px !important;
+}
+.no-padding {
+    padding: 0px !important;
+}
+.mat-dialog-container {
+    background-color: var(--bg-white) !important;
+}
+.image-uploader-container {
+    background-color: var(--bg-white);
+    border-radius: var(--border-sm);
+    padding: var(--padding-xl);
+    width: fit-content;
+}

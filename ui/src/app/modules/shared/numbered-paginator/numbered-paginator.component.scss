@@ -1,0 +1,50 @@
+.num-paginator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .pages {
+        display: flex;
+        gap: 0.25rem;
+    }
+
+    .page-btn {
+        min-width: 36px;
+        padding: 0 8px;
+        background: transparent;
+        border: none;
+        position: relative;
+
+        &.mat-button {
+            box-shadow: none;
+        }
+
+        /* green underline for current page */
+        &.active {
+            pointer-events: none;
+            color: inherit;
+        }
+
+        &.active::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -2px;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-500);
+            /* green */
+            transform: translateX(-50%);
+        }
+    }
+
+    .ellipsis-btn {
+        min-width: 36px;
+        background: transparent;
+    }
+
+    .pages-menu .menu-active {
+        font-weight: 600;
+        color: var(--primary-500);
+    }
+}

@@ -1,0 +1,30 @@
+// .mat-radio-inner-circle{
+//     background-color: var(--secondary-500) !important;
+// }
+// .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+//   border-color: var(--secondary-500) !important;
+// }
+//     .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+//         background-color: var(--secondary-500) !important;
+//     }
+.mat-radio-label-content {
+    font-family: 'Kloud Regular' !important;
+}
+.mat-radio-inner-circle {
+    background-color: var(--primary-500) !important;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple {
+    background-color: var(--primary-500) !important;
+}
+// .mat-ripple-element{
+//          background-color: var(--default-500) !important;
+// }
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: var(--primary-500) !important;
+}
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    background-color: var(--primary-500) !important;
+}
+.mat-checkbox-checked.mat-primary .mat-checkbox-background {
+    background-color: var(--primary-500) !important;
+}

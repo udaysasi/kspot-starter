@@ -1,0 +1,23 @@
+.mat-chip.mat-standard-chip {
+    background-color: color-mix(in srgb, var(--primary-500) 50%, transparent) !important;
+    color: var(--primary-text) !important;
+    border-radius: 0.3rem;
+    padding: 0.3rem !important;
+    font-size: 0.8rem !important;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    .mat-standard-chip .mat-chip-remove.mat-icon {
+        width: 18px;
+        height: 18px;
+        font-size: 0.8rem;
+        color: var(--primary-text) !important;
+        text-align: center;
+        justify-content: center;
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+}

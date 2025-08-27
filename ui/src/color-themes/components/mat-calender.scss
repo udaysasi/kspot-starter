@@ -1,0 +1,16 @@
+@use "../variables.theme.scss" as vars;
+
+.mat-calendar-body-selected {
+    background-color: var(--primary-500) !important;
+    border: 1px solid var(--primary-500) !important;
+}
+.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical):hover {
+    background-color: var(--primary-500) !important;
+}
+
+.mat-button-wrapper {
+    #mat-calendar-button-1,
+    #mat-calendar-button-0 {
+        color: var(--primary-500) !important;
+    }
+}

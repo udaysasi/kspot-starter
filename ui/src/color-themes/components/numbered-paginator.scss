@@ -1,0 +1,11 @@
+.num-paginator {
+    font-family: 'Kloud SemiBold' !important;
+    font-size: var(--text-md-font-size) !important;
+    font-weight: var(--text-lg-font-weight) !important;
+    color: $primary-text !important;
+
+    .page-btn.mat-btn {
+        background: var(--error-500) !important;
+        color: $primary-text !important;
+    }
+}

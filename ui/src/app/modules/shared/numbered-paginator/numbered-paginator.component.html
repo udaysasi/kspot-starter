@@ -1,0 +1,59 @@
+<nav class="num-paginator" *ngIf="totalPages > 0" aria-label="Pagination">
+    <button mat-icon-button [disabled]="pageIndex === 0" (click)="prev()">&lt;</button>
+
+    <!-- First page + (optional) left ellipsis -->
+    <ng-container *ngIf="showFirst">
+        <button
+            class="page-btn"
+            mat-button
+            [class.active]="pageIndex === 0"
+            [disabled]="pageIndex === 0"
+            (click)="goTo(0)"
+        >
+            1
+        </button>
+
+        <button *ngIf="showLeftEllipsis" mat-button class="ellipsis-btn" [matMenuTriggerFor]="leftMenu">…</button>
+        <mat-menu #leftMenu="matMenu" class="pages-menu">
+            <button mat-menu-item *ngFor="let p of leftEllipsisPages" (click)="goTo(p)">
+                <span [class.menu-active]="p === pageIndex">{{ p + 1 }}</span>
+            </button>
+        </mat-menu>
+    </ng-container>
+
+    <!-- Sliding window -->
+    <div class="pages">
+        <button
+            *ngFor="let p of windowPages"
+            class="page-btn"
+            mat-button
+            [class.active]="p === pageIndex"
+            [disabled]="p === pageIndex"
+            (click)="goTo(p)"
+        >
+            {{ p + 1 }}
+        </button>
+    </div>
+
+    <!-- (optional) right ellipsis + last page -->
+    <ng-container *ngIf="showLast">
+        <button *ngIf="showRightEllipsis" mat-button class="ellipsis-btn" [matMenuTriggerFor]="rightMenu">…</button>
+        <mat-menu #rightMenu="matMenu" class="pages-menu">
+            <button mat-menu-item *ngFor="let p of rightEllipsisPages" (click)="goTo(p)">
+                <span [class.menu-active]="p === pageIndex">{{ p + 1 }}</span>
+            </button>
+        </mat-menu>
+
+        <button
+            class="page-btn"
+            mat-button
+            [class.active]="pageIndex === lastPageIndex"
+            [disabled]="pageIndex === lastPageIndex"
+            (click)="goTo(lastPageIndex)"
+        >
+            {{ totalPages }}
+        </button>
+    </ng-container>
+
+    <button mat-icon-button [disabled]="pageIndex >= lastPageIndex" (click)="next()">&gt;</button>
+</nav>

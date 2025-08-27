@@ -1,0 +1,46 @@
+<div class="flex w-full h-full">
+    <div class="overflow-auto absolute top-3 left-3 flex z-60 dark:hidden">
+        <img class="w-fit h-8" src="assets/images/logo/logo-text.svg" alt="Loading" />
+    </div>
+    <div class="overflow-auto absolute top-3 left-3 flex z-60 dark:block">
+        <img class="w-fit h-8" src="assets/images/logo/logo-text-on-dark.svg" alt="Loading" />
+    </div>
+    <div
+        class="absolute bg-transparent h-5/6 w-3/12 overflow-auto z-49 top-24 left-16 content-center"
+    >
+        <div class="flex flex-col justify-center p-4 gap-4">
+            <div class="flex w-full justify-start"></div>
+            <div class="flex flex-col gap-2">
+                @for (item of sites; track $index) {
+                <mat-card
+                    class="flex bg-transparent w-full cursor-pointer justify-start hover:bg-primary hover:bg-opacity-10"
+                    (click)="onSiteClick(item)"
+                    (mouseover)="onMouseOver(item)"
+                >
+                    <mat-card-header>
+                        <mat-card-title>{{ item.name }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="flex flex-col gap-2">
+                            <div class="bg-transparent">
+                                <div class="flex gap-2">
+                                    <span class="text-sm text-gray-400">{{
+                                        item.address
+                                    }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="flex w-full">
+        <app-globe
+            class="w-full"
+            [sites]="matedSites"
+            (onGlobeMarkerClick)="onGlobeMarkerClick($event)"
+        ></app-globe>
+    </div>
+</div>
