@@ -1,0 +1,106 @@
+<section class="wrap" [class.loading]="loading()">
+	<header class="header">
+		<div>
+			<h1 class="text-primary text-3xl font-bold">Welcome, {{ data()?.profile?.name || 'Patient' }}</h1>
+			<p class="sub">MRN: {{ data()?.profile?.mrn }} · PCP: {{ data()?.profile?.primaryProvider }}</p>
+		</div>
+	</header>
+
+	<section class="kpis">
+		<div class="kpi">
+			<div class="kpi-label">Next appointment</div>
+			<div class="kpi-value">
+				<ng-container *ngIf="data()?.kpis?.nextAppointment; else none">
+					{{ data()?.kpis?.nextAppointment?.date | date:'EEE, MMM d · h:mm a' }}
+				</ng-container>
+				<ng-template #none>—</ng-template>
+			</div>
+			<div class="kpi-sub">
+				{{ data()?.kpis?.nextAppointment?.provider }} · {{ data()?.kpis?.nextAppointment?.location }}
+			</div>
+		</div>
+
+		<div class="kpi">
+			<div class="kpi-label">Active prescriptions</div>
+			<div class="kpi-value">{{ data()?.kpis?.activePrescriptions ?? 0 }}</div>
+		</div>
+
+		<div class="kpi">
+			<div class="kpi-label">Unread messages</div>
+			<div class="kpi-value">{{ data()?.kpis?.unreadMessages ?? 0 }}</div>
+		</div>
+
+		<div class="kpi">
+			<div class="kpi-label">Labs pending</div>
+			<div class="kpi-value">{{ data()?.kpis?.labResultsPending ?? 0 }}</div>
+		</div>
+
+		<div class="kpi busy border-primary bg-primary text-white">
+			<div class="kpi-label text-white">Waiting Room Occupancy</div>
+			<div class="kpi-value text-white">{{ data()?.kpis?.busyStatus ?? 0 }}</div>
+			<div class="kpi-sub text-white">People in waiting area (last {{ lookbackMin() }} min)</div>
+		</div>
+	</section>
+
+	<section class="grid">
+		<article class="card">
+			<h2>Upcoming & recent appointments</h2>
+			<ul class="list">
+				<li *ngFor="let a of data()?.appointments">
+					<div class="title">{{ a.reason }}</div>
+					<div class="meta">
+						{{ a.date | date:'EEE, MMM d · h:mm a' }} · {{ a.provider }} · {{ a.location }}
+						<span class="badge" [class.done]="a.status==='Completed'">{{ a.status }}</span>
+					</div>
+				</li>
+			</ul>
+		</article>
+
+		<article class="card">
+			<h2>Medications</h2>
+			<ul class="list">
+				<li *ngFor="let m of data()?.medications">
+					<div class="title">{{ m.name }}</div>
+					<div class="meta">{{ m.sig }} · <span class="badge">{{ m.status }}</span></div>
+				</li>
+			</ul>
+		</article>
+
+		<article class="card">
+			<h2>Labs</h2>
+			<ul class="list">
+				<li *ngFor="let l of data()?.labs">
+					<div class="title">{{ l.name }}</div>
+					<div class="meta">
+						<span class="badge" [class.done]="l.status==='Completed'">{{ l.status }}</span>
+						<ng-container *ngIf="l.orderedOn"> · ordered {{ l.orderedOn | date:'MMM d' }}</ng-container>
+					</div>
+				</li>
+			</ul>
+		</article>
+
+		<article class="card">
+			<h2>Billing</h2>
+			<ul class="list">
+				<li *ngFor="let b of data()?.bills">
+					<div class="title">Invoice {{ b.id }}</div>
+					<div class="meta">
+						{{ b.date | date:'MMM d' }} · {{ b.amount | currency }}
+						· <span class="badge due">{{ b.status }}</span>
+					</div>
+				</li>
+			</ul>
+		</article>
+
+		<article class="card">
+			<h2>Messages</h2>
+			<ul class="list">
+				<li *ngFor="let msg of data()?.messages">
+					<div class="title">{{ msg.subject }}</div>
+					<div class="meta">from {{ msg.from }} <span class="badge" *ngIf="msg.unread">Unread</span></div>
+				</li>
+			</ul>
+		</article>
+	</section>
+	<div class="error-text mt-4">Note that the "Waiting Room Occupancy" card data is being pulled from Kloudspot using Kloudspot's Node SDK whereas the rest of the page is loaded from the Hospital service.</div>
+</section>

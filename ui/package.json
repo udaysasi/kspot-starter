@@ -2,7 +2,7 @@
   "name": "kspotapp",
   "version": "1.0.0",
   "description": "Starter Project for a sample app built on Kloudspot Platform",
-  "author": "Uday Pydas",
+  "author": "Uday Pyda",
   "license": "https://www.apache.org/licenses/LICENSE-2.0.txt",
   "private": true,
   "scripts": {

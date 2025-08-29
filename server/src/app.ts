@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { generatedRoutes } from './generatedRoutes.js';
+import { patientRoutes } from './routes/patient.js';
 
 dotenv.config();
 
@@ -12,6 +13,9 @@ app.use(express.json({ limit: '2mb' }));
 
 // Mount generated routes at root so paths from spec (which include /api/v1/...) are preserved
 app.use('/', generatedRoutes);
+
+//Use a separate routing file for all Patient Info
+app.use('/api/v1/patient', patientRoutes);
 
 // Health check
 app.get('/health', (_req, res) => res.status(200).json({ ok: true }));

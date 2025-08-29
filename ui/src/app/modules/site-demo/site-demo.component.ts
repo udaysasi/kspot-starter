@@ -160,7 +160,7 @@ export class SiteDemoComponent implements OnInit {
         try {
             const tz = this.selectedSite()?.timeZoneId
                   ?? Intl.DateTimeFormat().resolvedOptions().timeZone;
-                const { start, finish } = this.getDayRangeInZone(tz);
+            const { start, finish } = this.getDayRangeInZone(tz);
             const data = await firstValueFrom(this.api.getHourlyDistribution(siteId, start, finish));
             this.rows.set(data);
             this.updateChart(data);

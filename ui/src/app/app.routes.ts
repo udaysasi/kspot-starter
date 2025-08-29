@@ -6,6 +6,7 @@ import { LayoutComponent } from 'app/layout/layout.component';
 import { Error404Component } from './layout/common/error-404/error-404.component';
 import { AppSettingsComponent } from './layout/common/app-settings/app-settings.component';
 import { roleGuard } from './core/auth/guards/role.guard';
+import { PatientDashboardComponent } from './modules/patient-dashboard/patient-dashboard.component';
 
 // @formatter:off
 /* eslint-disable max-len */
@@ -36,6 +37,7 @@ export const appRoutes: Route[] = [
                 loadChildren: () =>
                     import('app/modules/site-demo/site-demo.routes'),
             },
+			{ path: 'patient-dashboard', component: PatientDashboardComponent },
             {
                 path: 'confirmation-required',
                 loadChildren: () =>
